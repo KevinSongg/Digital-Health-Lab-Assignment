@@ -38,7 +38,8 @@ function App() {
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
     const phone = document.getElementById("phone").value;
-    const postData = {name, email, phone};
+    const id = newUserCount;
+    const postData = {id, name, email, phone};
     console.log(postData);
 
     fetch(url + "/users/add/", {
@@ -49,7 +50,7 @@ function App() {
       console.log("Post response:", res);
     });
     setNewUserCount(newUserCount+1); 
-
+   
     document.getElementById("name").value="";
     document.getElementById("email").value="";
     document.getElementById("phone").value="";

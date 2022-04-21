@@ -12,6 +12,6 @@ def index(request):
 @csrf_exempt
 def add(request):
     body = json.loads(request.body.decode('utf-8'))
-    user = User(body["name"], body["email"], body["phone"])
+    user = User(body["id"],body["name"], body["email"], body["phone"])
     user.save()
     return HttpResponse("Add user response." )
