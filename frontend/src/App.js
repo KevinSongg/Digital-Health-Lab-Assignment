@@ -8,7 +8,11 @@ function App() {
   const [users, setUsers] = useState();
   const [isFetching, setFetching] = useState(false);
   const [newUserCount, setNewUserCount] = useState(0);
-
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+ 
+  
   const fetchUsers = async () => {
     setFetching(true);
 
@@ -35,9 +39,6 @@ function App() {
 
   
   const addUser = async () => {
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
     const id = newUserCount;
     const postData = {id, name, email, phone};
     console.log(postData);
@@ -49,12 +50,13 @@ function App() {
     }).then(res => {
       console.log("Post response:", res);
     });
-    setNewUserCount(newUserCount+1); 
-   
-    document.getElementById("name").value="";
-    document.getElementById("email").value="";
-    document.getElementById("phone").value="";
-
+    setNewUserCount(newUserCount+1);
+    setName("");
+    setEmail("");
+    setPhone("");
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("phone").value = "";
   }
   return (
     <div className="App">
@@ -70,13 +72,13 @@ function App() {
         )}
       </header>
       <div>
-         Name:<input id="name"></input> 
+         Name:<input  id="name"  onBlur={evt => setName(evt.target.value)}></input> 
       </div>
       <div>
-        Email: <input id="email"></input> 
+        Email: <input id="email" onBlur={evt => setEmail(evt.target.value)}></input> 
       </div>
       <div>
-        Phone:<input id="phone"></input> 
+        Phone:<input id="phone" onBlur={evt => setPhone(evt.target.value)} ></input> 
       </div>
       <button className="Add-button" onClick={addUser}>Add User</button>
     </div>
