@@ -54,9 +54,7 @@ function App() {
     setName("");
     setEmail("");
     setPhone("");
-    document.getElementById("name").value = "";
-    document.getElementById("email").value = "";
-    document.getElementById("phone").value = "";
+
   }
   return (
     <div className="App">
@@ -72,13 +70,13 @@ function App() {
         )}
       </header>
       <div>
-         Name:<input  id="name"  onBlur={evt => setName(evt.target.value)}></input> 
+         Name:<input  id="name" value={name}  onChange={evt => setName(evt.target.value)}></input> 
       </div>
       <div>
-        Email: <input id="email" onBlur={evt => setEmail(evt.target.value)}></input> 
+        Email: <input id="email" value={email} onChange={evt => setEmail(evt.target.value)}></input> 
       </div>
       <div>
-        Phone:<input id="phone" onBlur={evt => setPhone(evt.target.value)} ></input> 
+        Phone:<input id="phone" value={phone} onChange={evt => setPhone(evt.target.value)} ></input> 
       </div>
       <button className="Add-button" onClick={addUser}>Add User</button>
     </div>
